@@ -1,12 +1,8 @@
 # Text Classification for Matichon News
 
----
-
 A freetime project using Logistic Regression and XGBoost to classify news from Matichon into 10 topics: politics, region, crime, local, publicize, foreign, economy, sport, education, entertainment.
 
 # Workflow
-
----
 
 1. EDA and text preprocessing 
    * `code/preprocessing.ipynb`
@@ -15,8 +11,6 @@ A freetime project using Logistic Regression and XGBoost to classify news from M
    * `code/xgboost.ipynb` 
 
 # Data Overview
-
----
 
 The data used in this project is the Matichon news retrieved from [Matichon Online](https://www.matichon.co.th/) from 2015 to 2018. There are 17,104 records in total after cleaning all duplicated rows.
 
@@ -52,15 +46,11 @@ The distribution of each category is described as follows:
 
 # Text Preprocessing
 
----
-
 1. Combine `headline` and `article` into `text` data.
 2. Tokenize `text` using `pythainlp.tokenize.word_tokenize` with `newmm` engine, because I need it to be fast.
 3. Clean `tokenized text` by keeping only Thai and English valid tokens (using Regular Expression) and excluding thai stopwords (retrived from `pythainlp.corpus.thai_stopwords`). I do not keep punctuations because I also used the tokenized text to generate WordCloud for each news category.
 
 # Modeling
-
----
 
 In this project, I implemented two machine learning algorithms, Logistic Regression and XGBoost (Extreme Gradient Boosting), to create multi-class classification models. I used `DictVectorizer` and custom functions to vectorize the tokens, and I tried these combinations of features and algorithms as follows:
 
@@ -79,8 +69,6 @@ In this project, I implemented two machine learning algorithms, Logistic Regress
 For each algorithm, I tried fitting 4 models with each of the features above. Consequently, there are 8 combinations of features and algorithms.
 
 # Model Evaluation
-
----
 
 Since there is no class more important than one another, I decided to use `Macro F1 score` as an overview evaluation score, and I decided not to use traditional `Accuracy` because there are some classes that are minority classes, e.g. `Economy` and `Education` news, so `Accuracy` might not represent an actual performance of the model.
 
